@@ -48,11 +48,14 @@ class SimpleFolderDataset(data.Dataset):
         return center, scale
 
     def __getitem__(self, index):
+      try:
         img_name = self.file_list[index]
         img_path = os.path.join(self.root, img_name)
         img = cv2.imread(img_path, cv2.IMREAD_COLOR)
         h, w, _ = img.shape
-
+      except:
+        print(img_name)
+        
         # Get person center and scale
         person_center, s = self._box2cs([0, 0, w - 1, h - 1])
         r = 0
