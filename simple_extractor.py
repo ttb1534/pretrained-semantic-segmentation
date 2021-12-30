@@ -125,7 +125,7 @@ def main():
 
     palette = get_palette(num_classes)
     with torch.no_grad():
-        for idx, batch in enumerate(tqdm(dataloader)):
+        for idx, batch in enumerate(dataloader):
             image, meta = batch
             img_name = meta['name'][0]
             c = meta['center'].numpy()[0]
